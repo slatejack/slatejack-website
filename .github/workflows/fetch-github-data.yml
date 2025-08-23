@@ -32,5 +32,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/data/
-          git commit -m "更新GitHub数据 $(date +'%Y-%m-%d')" || echo "没有变更"
+          git commit -m "chore: 更新GitHub数据 $(date +'%Y-%m-%d')" || echo "没有变更"
           git push
