@@ -34,25 +34,25 @@
   "frameworks": [
     {
       "name": "React",
-      "level": 60,
+      "level": 40,
       "icon": "fab fa-react",
       "color": "text-blue-400"
     },
     {
       "name": "Angular",
-      "level": 60,
+      "level": 25,
       "icon": "fab fa-angular",
       "color": "text-red-500"
     },
     {
       "name": "Node.js",
-      "level": 60,
+      "level": 20,
       "icon": "fab fa-node-js",
       "color": "text-green-500"
     },
     {
       "name": "Vue",
-      "level": 60,
+      "level": 10,
       "icon": "fab fa-vuejs",
       "color": "text-green-400"
     }
@@ -60,10 +60,10 @@
   "tools": [
     {
       "name": "AWS",
-      "level": 60,
+      "level": 5,
       "icon": "fab fa-aws",
       "color": "text-orange-400"
     }
   ],
-  "lastUpdated": "2025-08-23T09:31:57.661Z"
+  "lastUpdated": "2025-08-23T10:23:18.596Z"
 }
