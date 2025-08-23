@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlateJack - 开发者</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'github-dark': '#0d1117',
+                        'github-gray': '#21262d',
+                        'github-border': '#30363d',
+                        'github-text': '#e6edf3',
+                        'github-blue': '#58a6ff',
+                        'github-green': '#3fb950',
+                        'light-bg': '#ffffff',
+                        'light-gray': '#f6f8fa',
+                        'light-border': '#d0d7de',
+                        'light-text': '#24292f',
+                        'light-secondary': '#656d76'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --theme-transition: all 0.3s ease;
+        }
+        
+        /* 深色模式样式 */
+        .dark {
+            background-color: #0d1117 !important;
+            color: #e6edf3 !important;
+        }
+        
+        .dark nav {
+            background-color: rgba(13, 17, 23, 0.95) !important;
+            border-color: #30363d !important;
+        }
+        
+        .dark .bg-github-gray {
+            background-color: #21262d !important;
+        }
+        
+        .dark .border-github-border {
+            border-color: #30363d !important;
+        }
+        
+        .dark .text-github-text {
+            color: #e6edf3 !important;
+        }
+        
+        /* 浅色模式样式 */
+        .light {
+            background-color: #ffffff !important;
+            color: #24292f !important;
+        }
+        
+        .light nav {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            border-color: #d0d7de !important;
+        }
+        
+        .light .bg-github-gray {
+            background-color: #f6f8fa !important;
+        }
+        
+        .light .border-github-border {
+            border-color: #d0d7de !important;
+        }
+        
+        .light .text-github-text {
+            color: #24292f !important;
+        }
+        
+        .card-hover {
+            transition: var(--theme-transition);
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 8px 25px rgba(88, 166, 255, 0.15);
+        }
+        .light .card-hover:hover {
+            box-shadow: 0 8px 25px rgba(88, 166, 255, 0.25);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #58a6ff;
+            border-radius: 50%;
+            transition: var(--theme-transition);
+        }
+        .dark .timeline-item::before {
+            border: 2px solid #0d1117;
+        }
+        .timeline-item::before:not(.dark *) {
+            border: 2px solid #ffffff;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: -1px;
+            top: 20px;
+            bottom: -20px;
+            width: 2px;
+            transition: var(--theme-transition);
+        }
+        .dark .timeline-line {
+            background: #30363d;
+        }
+        .timeline-line:not(.dark *) {
+            background: #d0d7de;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: var(--theme-transition);
+        }
+        .dark .skill-bar {
+            background: #30363d;
+        }
+        .skill-bar:not(.dark *) {
+            background: #d0d7de;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #58a6ff, #3fb950);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .stats-card {
+            transition: var(--theme-transition);
+        }
+        .dark .stats-card {
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(63, 185, 80, 0.1));
+        }
+        .stats-card:not(.dark *) {
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.15), rgba(63, 185, 80, 0.15));
+        }
+        
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #30363d;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--theme-transition);
+        }
+        .theme-toggle:not(.dark *) {
+            background: #d0d7de;
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: #58a6ff;
+            border-radius: 50%;
+            transition: var(--theme-transition);
+        }
+        .theme-toggle.light::before {
+            transform: translateX(30px);
+            background: #f59e0b;
+        }
+        
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="dark bg-github-dark text-github-text transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="sticky top-0 bg-github-dark/95 dark:bg-github-dark/95 bg-light-bg/95 backdrop-blur-sm border-b border-github-border dark:border-github-border border-light-border z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-github-gray dark:bg-github-gray bg-light-gray rounded-full flex items-center justify-center">
+                        <i class="fab fa-github text-github-blue"></i>
+                    </div>
+                    <span class="font-semibold">SlateJack</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#about" class="hover:text-github-blue transition-colors">关于</a>
+                        <a href="#skills" class="hover:text-github-blue transition-colors">技能</a>
+                        <a href="#projects" class="hover:text-github-blue transition-colors">项目</a>
+                        <a href="#experience" class="hover:text-github-blue transition-colors">经历</a>
+                        <a href="#blog" class="hover:text-github-blue transition-colors">博客</a>
+                        <a href="#contact" class="hover:text-github-blue transition-colors">联系</a>
+                    </div>
+                    <!-- 主题切换按钮 -->
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-sun text-yellow-400 text-sm"></i>
+                        <div class="theme-toggle" id="themeToggle"></div>
+                        <i class="fas fa-moon text-blue-400 text-sm"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="w-32 h-32 bg-github-gray dark:bg-github-gray bg-light-gray rounded-full flex items-center justify-center mx-auto mb-8">
+                <i class="fab fa-github text-5xl text-github-blue"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">SlateJack</h1>
+            <p class="text-xl text-github-text/70 dark:text-github-text/70 text-light-secondary mb-8">开发者 · 开源贡献者 · 技术探索者</p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://github.com/slatejack" target="_blank" 
+                   class="bg-github-blue hover:bg-github-blue/80 px-6 py-3 rounded-lg transition-colors">
+                    <i class="fab fa-github mr-2"></i>查看 GitHub
+                </a>
+                <a href="#contact" 
+                   class="border border-github-border dark:border-github-border border-light-border hover:border-github-blue px-6 py-3 rounded-lg transition-colors">
+                    联系我
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-6">
+        <!-- GitHub Stats -->
+        <section class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-8 text-center">GitHub 统计</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stats-card bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border text-center">
+                    <i class="fas fa-code text-3xl text-github-blue mb-3"></i>
+                    <div class="text-2xl font-bold text-github-green">3</div>
+                    <div class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">公开仓库</div>
+                </div>
+                <div class="stats-card bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border text-center">
+                    <i class="fas fa-star text-3xl text-yellow-400 mb-3"></i>
+                    <div class="text-2xl font-bold text-github-green">0</div>
+                    <div class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">获得星标</div>
+                </div>
+                <div class="stats-card bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border text-center">
+                    <i class="fas fa-code-branch text-3xl text-purple-400 mb-3"></i>
+                    <div class="text-2xl font-bold text-github-green">0</div>
+                    <div class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">Fork 数量</div>
+                </div>
+                <div class="stats-card bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border text-center">
+                    <i class="fas fa-users text-3xl text-github-blue mb-3"></i>
+                    <div class="text-2xl font-bold text-github-green">0</div>
+                    <div class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">关注者</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-8">关于我</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-8 border border-github-border dark:border-github-border border-light-border">
+                    <h3 class="text-xl font-semibold mb-4 text-github-blue">个人简介</h3>
+                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary leading-relaxed mb-4">
+                        热爱编程的开发者，专注于创建实用的解决方案。在GitHub上分享代码，
+                        与开发者社区共同成长。喜欢探索新技术，持续学习和改进。
+                    </p>
+                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary leading-relaxed">
+                        专注于微服务架构、测试开发和代码优化，致力于编写高质量、可维护的代码。
+                        相信开源的力量，积极参与社区贡献。
+                    </p>
+                </div>
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-8 border border-github-border dark:border-github-border border-light-border">
+                    <h3 class="text-xl font-semibold mb-4 text-github-blue">技术理念</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-lightbulb text-yellow-400 mt-1"></i>
+                            <div>
+                                <div class="font-medium">持续学习</div>
+                                <div class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">保持对新技术的好奇心和学习热情</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-users text-github-blue mt-1"></i>
+                            <div>
+                                <div class="font-medium">开源协作</div>
+                                <div class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">相信开源的力量，积极参与社区</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-cogs text-github-green mt-1"></i>
+                            <div>
+                                <div class="font-medium">代码质量</div>
+                                <div class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">追求简洁、高效、可维护的代码</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-8">技能栈</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-8 border border-github-border dark:border-github-border border-light-border">
+                    <h3 class="text-xl font-semibold mb-6 text-github-blue">编程语言</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>JavaScript</span>
+                                <span class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Python</span>
+                                <span class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Go</span>
+                                <span class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Java</span>
+                                <span class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-8 border border-github-border dark:border-github-border border-light-border">
+                    <h3 class="text-xl font-semibold mb-6 text-github-blue">技术栈</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Node.js</span>
+                                <span class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>React</span>
+                                <span class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Docker</span>
+                                <span class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>MySQL</span>
+                                <span class="text-sm text-github-text/70 dark:text-github-text/70 text-light-secondary">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-8">精选项目</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-github-blue">sj.micro</h3>
+                        <i class="fab fa-github text-github-text/50"></i>
+                    </div>
+                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary text-sm mb-4">
+                        微服务架构相关的项目，专注于构建可扩展的分布式系统。
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary">
+                            <span class="flex items-center">
+                                <div class="w-3 h-3 bg-yellow-400 rounded-full mr-1"></div>
+                                JavaScript
+                            </span>
+                        </div>
+                        <a href="https://github.com/slatejack/sj.micro" target="_blank" 
+                           class="text-github-blue hover:text-github-blue/80 text-sm">
+                            查看项目
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-github-blue">sj.test</h3>
+                        <i class="fab fa-github text-github-text/50"></i>
+                    </div>
+                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary text-sm mb-4">
+                        测试相关的工具和框架，提供高效的测试解决方案。
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary">
+                            <span class="flex items-center">
+                                <div class="w-3 h-3 bg-yellow-400 rounded-full mr-1"></div>
+                                JavaScript
+                            </span>
+                        </div>
+                        <a href="https://github.com/slatejack/sj.test" target="_blank" 
+                           class="text-github-blue hover:text-github-blue/80 text-sm">
+                            查看项目
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-github-blue">modified</h3>
+                        <i class="fab fa-github text-github-text/50"></i>
+                    </div>
+                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary text-sm mb-4">
+                        代码修改和优化工具，帮助开发者提高代码质量。
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary">
+                            <span class="flex items-center">
+                                <div class="w-3 h-3 bg-yellow-400 rounded-full mr-1"></div>
+                                JavaScript
+                            </span>
+                        </div>
+                        <a href="https://github.com/slatejack/modified" target="_blank" 
+                           class="text-github-blue hover:text-github-blue/80 text-sm">
+                            查看项目
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-8">开发经历</h2>
+            <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-8 border border-github-border dark:border-github-border border-light-border">
+                <div class="relative">
+                    <div class="timeline-line"></div>
+                    <div class="space-y-8">
+                        <div class="timeline-item relative pl-8">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-github-blue">开源项目开发</h3>
+                                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary">专注于微服务和测试工具开发</p>
+                                    <p class="text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary mt-2">
+                                        开发了多个开源项目，包括微服务架构工具和测试框架，
+                                        为开发者社区提供实用的解决方案。
+                                    </p>
+                                </div>
+                                <span class="text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary">2023 - 至今</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item relative pl-8">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-github-blue">技术学习与实践</h3>
+                                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary">深入学习现代开发技术栈</p>
+                                    <p class="text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary mt-2">
+                                        系统学习JavaScript、Python、Go等编程语言，
+                                        掌握现代Web开发和后端开发技术。
+                                    </p>
+                                </div>
+                                <span class="text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary">2022 - 2023</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item relative pl-8">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-github-blue">编程入门</h3>
+                                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary">开始编程学习之旅</p>
+                                    <p class="text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary mt-2">
+                                        从基础的编程概念开始，逐步建立起对软件开发的理解和兴趣。
+                                    </p>
+                                </div>
+                                <span class="text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary">2021 - 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-8">技术分享</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border card-hover">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-blog text-github-blue mr-2"></i>
+                        <span class="text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary">技术博客</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">微服务架构最佳实践</h3>
+                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary text-sm mb-4">
+                        分享在微服务开发中的经验和最佳实践，包括服务拆分、通信机制等。
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-github-text/50 dark:text-github-text/50 text-light-secondary">2024-01-15</span>
+                        <a href="#" class="text-github-blue hover:text-github-blue/80 text-sm">阅读更多</a>
+                    </div>
+                </div>
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border card-hover">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-code text-github-green mr-2"></i>
+                        <span class="text-sm text-github-text/60 dark:text-github-text/60 text-light-secondary">代码分享</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">JavaScript 测试框架设计</h3>
+                    <p class="text-github-text/80 dark:text-github-text/80 text-light-secondary text-sm mb-4">
+                        深入探讨如何设计一个高效的JavaScript测试框架，提高测试效率。
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-github-text/50 dark:text-github-text/50 text-light-secondary">2024-01-10</span>
+                        <a href="#" class="text-github-blue hover:text-github-blue/80 text-sm">阅读更多</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Path Section -->
+        <section class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-8">学习路径</h2>
+            <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-8 border border-github-border dark:border-github-border border-light-border">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-github-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-code text-2xl text-github-blue"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">基础编程</h3>
+                        <p class="text-github-text/70 dark:text-github-text/70 text-light-secondary text-sm">
+                            掌握编程基础概念，学习多种编程语言
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-github-green/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-server text-2xl text-github-green"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">后端开发</h3>
+                        <p class="text-github-text/70 dark:text-github-text/70 text-light-secondary text-sm">
+                            深入学习服务器端开发和数据库设计
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-cloud text-2xl text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">云原生</h3>
+                        <p class="text-github-text/70 dark:text-github-text/70 text-light-secondary text-sm">
+                            探索容器化、微服务和云平台技术
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-8">工具推荐</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border">
+                    <h3 class="text-lg font-semibold mb-4 text-github-blue">开发工具</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fab fa-github text-github-blue"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-code text-blue-400"></i>
+                            <span>VS Code</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fab fa-docker text-blue-500"></i>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border">
+                    <h3 class="text-lg font-semibold mb-4 text-github-blue">测试工具</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-vial text-github-green"></i>
+                            <span>Jest</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-bug text-red-400"></i>
+                            <span>Postman</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-chart-line text-yellow-400"></i>
+                            <span>Cypress</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-6 border border-github-border dark:border-github-border border-light-border">
+                    <h3 class="text-lg font-semibold mb-4 text-github-blue">部署工具</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fab fa-aws text-orange-400"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-ship text-github-blue"></i>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-rocket text-purple-400"></i>
+                            <span>Vercel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-8">联系方式</h2>
+            <div class="bg-github-gray dark:bg-github-gray bg-light-gray rounded-lg p-8 border border-github-border dark:border-github-border border-light-border">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6 text-github-blue">联系我</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fab fa-github text-github-blue"></i>
+                                <a href="https://github.com/slatejack" target="_blank" 
+                                   class="text-github-text/80 dark:text-github-text/80 text-light-secondary hover:text-github-blue transition-colors">
+                                    github.com/slatejack
+                                </a>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-github-green"></i>
+                                <span class="text-github-text/80 dark:text-github-text/80 text-light-secondary">通过GitHub联系</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-red-400"></i>
+                                <span class="text-github-text/80 dark:text-github-text/80 text-light-secondary">开源社区</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6 text-github-blue">合作意向</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-handshake text-github-blue"></i>
+                                <span class="text-github-text/80 dark:text-github-text/80 text-light-secondary">开源项目合作</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-lightbulb text-yellow-400"></i>
+                                <span class="text-github-text/80 dark:text-github-text/80 text-light-secondary">技术交流讨论</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-code-branch text-github-green"></i>
+                                <span class="text-github-text/80 dark:text-github-text/80 text-light-secondary">代码审查与优化</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-github-gray dark:bg-github-gray bg-light-gray border-t border-github-border dark:border-github-border border-light-border py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-github-text/60 dark:text-github-text/60 text-light-secondary">
+                © 2024 SlateJack. 用 ❤️ 和 ☕ 制作
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" 
+            class="fixed bottom-6 right-6 bg-github-blue hover:bg-github-blue/80 text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div id="toast" 
+         class="fixed top-6 right-6 bg-github-green text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full opacity-0 invisible transition-all duration-300 z-50">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "languages": [
+    {
+      "name": "TypeScript",
+      "level": 64,
+      "icon": "fab fa-js-square",
+      "color": "text-blue-400"
+    },
+    {
+      "name": "JavaScript",
+      "level": 23,
+      "icon": "fab fa-js-square",
+      "color": "text-yellow-400"
+    },
+    {
+      "name": "Vue",
+      "level": 6,
+      "icon": "fas fa-code",
+      "color": "text-gray-400"
+    },
+    {
+      "name": "Less",
+      "level": 4,
+      "icon": "fas fa-code",
+      "color": "text-gray-400"
+    },
+    {
+      "name": "Rust",
+      "level": 1,
+      "icon": "fas fa-cog",
+      "color": "text-orange-600"
+    }
+  ],
+  "frameworks": [
+    {
+      "name": "React",
+      "level": 60,
+      "icon": "fab fa-react",
+      "color": "text-blue-400"
+    },
+    {
+      "name": "Angular",
+      "level": 60,
+      "icon": "fab fa-angular",
+      "color": "text-red-500"
+    },
+    {
+      "name": "Node.js",
+      "level": 60,
+      "icon": "fab fa-node-js",
+      "color": "text-green-500"
+    },
+    {
+      "name": "Vue",
+      "level": 60,
+      "icon": "fab fa-vuejs",
+      "color": "text-green-400"
+    }
+  ],
+  "tools": [
+    {
+      "name": "AWS",
+      "level": 60,
+      "icon": "fab fa-aws",
+      "color": "text-orange-400"
+    }
+  ],
+  "lastUpdated": "2025-08-23T09:31:57.661Z"
+}

@@ -1,0 +1,65 @@
+{
+  "projects": [
+    {
+      "name": "rc-bullets-ts",
+      "description": "rc-bullets基于Typescript重构版",
+      "language": "TypeScript",
+      "languageColor": "bg-blue-400",
+      "url": "https://github.com/slatejack/rc-bullets-ts",
+      "stars": 31,
+      "forks": 5,
+      "updatedAt": "2025-08-15"
+    },
+    {
+      "name": "ant-lunar-picker",
+      "description": "适用于antd的农历日期选择器",
+      "language": "TypeScript",
+      "languageColor": "bg-blue-400",
+      "url": "https://github.com/slatejack/ant-lunar-picker",
+      "stars": 1,
+      "forks": 0,
+      "updatedAt": "2024-04-01"
+    },
+    {
+      "name": "yindex-react",
+      "description": "Yindex For React",
+      "language": "TypeScript",
+      "languageColor": "bg-blue-400",
+      "url": "https://github.com/slatejack/yindex-react",
+      "stars": 1,
+      "forks": 0,
+      "updatedAt": "2022-09-14"
+    },
+    {
+      "name": "covert-galacean-config",
+      "description": "替换galacean产物资源域名",
+      "language": "JavaScript",
+      "languageColor": "bg-yellow-400",
+      "url": "https://github.com/slatejack/covert-galacean-config",
+      "stars": 0,
+      "forks": 0,
+      "updatedAt": "2024-04-01"
+    },
+    {
+      "name": "ant-region-cascader",
+      "description": "适用于ant design的地区级联选择器",
+      "language": "Unknown",
+      "languageColor": "bg-gray-400",
+      "url": "https://github.com/slatejack/ant-region-cascader",
+      "stars": 0,
+      "forks": 0,
+      "updatedAt": "2023-07-02"
+    },
+    {
+      "name": "miniprogramme-helper",
+      "description": "微信小程序助手",
+      "language": "TypeScript",
+      "languageColor": "bg-blue-400",
+      "url": "https://github.com/slatejack/miniprogramme-helper",
+      "stars": 0,
+      "forks": 0,
+      "updatedAt": "2022-10-08"
+    }
+  ],
+  "lastUpdated": "2025-08-23T09:31:57.223Z"
+}

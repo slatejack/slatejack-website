@@ -1,0 +1,33 @@
+{
+  "stats": [
+    {
+      "icon": "fas fa-code",
+      "value": 29,
+      "label": "公开仓库",
+      "color": "text-github-blue",
+      "key": "public_repos"
+    },
+    {
+      "icon": "fas fa-star",
+      "value": 33,
+      "label": "获得星标",
+      "color": "text-yellow-400",
+      "key": "stargazers"
+    },
+    {
+      "icon": "fas fa-code-branch",
+      "value": 7,
+      "label": "Fork 数量",
+      "color": "text-purple-400",
+      "key": "forks"
+    },
+    {
+      "icon": "fas fa-users",
+      "value": 0,
+      "label": "关注者",
+      "color": "text-github-blue",
+      "key": "followers"
+    }
+  ],
+  "lastUpdated": "2025-08-23T09:31:57.453Z"
+}

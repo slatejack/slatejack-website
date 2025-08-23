@@ -1,0 +1,63 @@
+{
+  "categories": [
+    {
+      "title": "开发工具",
+      "titleColor": "text-github-blue",
+      "tools": [
+        {
+          "icon": "fas fa-code",
+          "iconColor": "text-github-blue",
+          "name": "JetBrains"
+        },
+        {
+          "icon": "fas fa-code",
+          "iconColor": "text-blue-400",
+          "name": "VS Code"
+        },
+        {
+          "icon": "fab fa-docker",
+          "iconColor": "text-blue-500",
+          "name": "Docker"
+        }
+      ]
+    },
+    {
+      "title": "测试工具",
+      "titleColor": "text-github-blue",
+      "tools": [
+        {
+          "icon": "fas fa-vial",
+          "iconColor": "text-github-green",
+          "name": "Jest"
+        },
+        {
+          "icon": "fas fa-bug",
+          "iconColor": "text-red-400",
+          "name": "Postman"
+        }
+      ]
+    },
+    {
+      "title": "部署工具",
+      "titleColor": "text-github-blue",
+      "tools": [
+        {
+          "icon": "fab fa-aws",
+          "iconColor": "text-orange-400",
+          "name": "AWS"
+        },
+        {
+          "icon": "fab fa-github",
+          "iconColor": "text-github-blue",
+          "name": "GitHub Pages"
+        },
+        {
+          "icon": "fas fa-rocket",
+          "iconColor": "text-purple-400",
+          "name": "Vercel"
+        }
+      ]
+    }
+  ],
+  "lastUpdated": "2025-08-23T09:31:56.837Z"
+}

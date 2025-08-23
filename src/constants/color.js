@@ -1,0 +1,22 @@
+export const DEFAULT_PROJECT_COLOR = {
+      JavaScript: 'bg-yellow-400',
+      TypeScript: 'bg-blue-400',
+      Python: 'bg-green-500',
+      Java: 'bg-red-500',
+      Go: 'bg-blue-500',
+      Ruby: 'bg-red-600',
+      PHP: 'bg-purple-500',
+      C: 'bg-gray-500',
+      'C++': 'bg-pink-500',
+      'C#': 'bg-green-600',
+      HTML: 'bg-orange-500',
+      CSS: 'bg-blue-300',
+      Shell: 'bg-green-400',
+      Rust: 'bg-orange-600',
+      Swift: 'bg-orange-500',
+      Kotlin: 'bg-purple-400',
+      Dart: 'bg-blue-300',
+      Vue: 'bg-green-400',
+      React: 'bg-blue-400',
+      Angular: 'bg-red-500'
+    };
