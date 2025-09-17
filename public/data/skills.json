@@ -2,7 +2,7 @@
   "languages": [
     {
       "name": "TypeScript",
-      "level": 64,
+      "level": 63,
       "icon": "fab fa-js-square",
       "color": "text-blue-400"
     },
@@ -14,13 +14,13 @@
     },
     {
       "name": "Vue",
-      "level": 6,
+      "level": 7,
       "icon": "fas fa-code",
       "color": "text-gray-400"
     },
     {
       "name": "Less",
-      "level": 4,
+      "level": 3,
       "icon": "fas fa-code",
       "color": "text-gray-400"
     },
@@ -34,25 +34,25 @@
   "frameworks": [
     {
       "name": "React",
-      "level": 40,
+      "level": 38,
       "icon": "fab fa-react",
       "color": "text-blue-400"
     },
     {
       "name": "Angular",
-      "level": 25,
+      "level": 24,
       "icon": "fab fa-angular",
       "color": "text-red-500"
     },
     {
       "name": "Node.js",
-      "level": 20,
+      "level": 19,
       "icon": "fab fa-node-js",
       "color": "text-green-500"
     },
     {
       "name": "Vue",
-      "level": 10,
+      "level": 14,
       "icon": "fab fa-vuejs",
       "color": "text-green-400"
     }
@@ -65,5 +65,5 @@
       "color": "text-orange-400"
     }
   ],
-  "lastUpdated": "2025-09-16T03:30:01.050Z"
+  "lastUpdated": "2025-09-17T03:29:04.235Z"
 }
