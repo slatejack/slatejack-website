@@ -16,7 +16,7 @@
     },
     {
       "icon": "fas fa-code-branch",
-      "value": 7,
+      "value": 8,
       "label": "Fork 数量",
       "color": "text-purple-400",
       "key": "forks"
@@ -29,5 +29,5 @@
       "key": "followers"
     }
   ],
-  "lastUpdated": "2025-09-22T03:39:30.117Z"
+  "lastUpdated": "2025-09-23T03:31:30.002Z"
 }
