@@ -2,33 +2,33 @@
   "languages": [
     {
       "name": "TypeScript",
-      "level": 63,
+      "level": 61,
       "icon": "fab fa-js-square",
       "color": "text-blue-400"
     },
     {
       "name": "JavaScript",
-      "level": 23,
+      "level": 22,
       "icon": "fab fa-js-square",
       "color": "text-yellow-400"
     },
     {
       "name": "Vue",
-      "level": 7,
+      "level": 6,
       "icon": "fas fa-code",
       "color": "text-gray-400"
+    },
+    {
+      "name": "HTML",
+      "level": 3,
+      "icon": "fab fa-html5",
+      "color": "text-orange-500"
     },
     {
       "name": "Less",
       "level": 3,
       "icon": "fas fa-code",
       "color": "text-gray-400"
-    },
-    {
-      "name": "Rust",
-      "level": 1,
-      "icon": "fas fa-cog",
-      "color": "text-orange-600"
     }
   ],
   "frameworks": [
@@ -65,5 +65,5 @@
       "color": "text-orange-400"
     }
   ],
-  "lastUpdated": "2025-11-05T03:45:13.583Z"
+  "lastUpdated": "2025-11-06T03:48:37.252Z"
 }
