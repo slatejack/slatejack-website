@@ -31,6 +31,16 @@
       "updatedAt": "2022-09-14"
     },
     {
+      "name": "taro-virtual-swiper",
+      "description": "基于 Taro 的高性能虚拟 Swiper 组件，支持大数据量场景",
+      "language": "TypeScript",
+      "languageColor": "bg-blue-400",
+      "url": "https://github.com/slatejack/taro-virtual-swiper",
+      "stars": 0,
+      "forks": 0,
+      "updatedAt": "2026-01-05"
+    },
+    {
       "name": "covert-galacean-config",
       "description": "替换galacean产物资源域名",
       "language": "JavaScript",
@@ -49,17 +59,7 @@
       "stars": 0,
       "forks": 0,
       "updatedAt": "2023-07-02"
-    },
-    {
-      "name": "miniprogramme-helper",
-      "description": "微信小程序助手",
-      "language": "TypeScript",
-      "languageColor": "bg-blue-400",
-      "url": "https://github.com/slatejack/miniprogramme-helper",
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2022-10-08"
     }
   ],
-  "lastUpdated": "2026-01-04T04:11:05.238Z"
+  "lastUpdated": "2026-01-05T04:16:49.606Z"
 }
