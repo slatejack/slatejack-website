@@ -34,19 +34,19 @@
   "frameworks": [
     {
       "name": "React",
-      "level": 38,
+      "level": 41,
       "icon": "fab fa-react",
       "color": "text-blue-400"
     },
     {
       "name": "Angular",
-      "level": 24,
+      "level": 23,
       "icon": "fab fa-angular",
       "color": "text-red-500"
     },
     {
       "name": "Node.js",
-      "level": 19,
+      "level": 18,
       "icon": "fab fa-node-js",
       "color": "text-green-500"
     },
@@ -65,5 +65,5 @@
       "color": "text-orange-400"
     }
   ],
-  "lastUpdated": "2026-01-06T04:02:19.034Z"
+  "lastUpdated": "2026-01-07T04:03:03.250Z"
 }
