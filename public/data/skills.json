@@ -2,25 +2,19 @@
   "languages": [
     {
       "name": "TypeScript",
-      "level": 63,
+      "level": 81,
       "icon": "fab fa-js-square",
       "color": "text-blue-400"
     },
     {
       "name": "JavaScript",
-      "level": 23,
+      "level": 12,
       "icon": "fab fa-js-square",
       "color": "text-yellow-400"
     },
     {
       "name": "Vue",
-      "level": 7,
-      "icon": "fas fa-code",
-      "color": "text-gray-400"
-    },
-    {
-      "name": "Less",
-      "level": 3,
+      "level": 4,
       "icon": "fas fa-code",
       "color": "text-gray-400"
     },
@@ -29,30 +23,36 @@
       "level": 1,
       "icon": "fas fa-cog",
       "color": "text-orange-600"
+    },
+    {
+      "name": "Java",
+      "level": 1,
+      "icon": "fab fa-java",
+      "color": "text-red-500"
     }
   ],
   "frameworks": [
     {
       "name": "React",
-      "level": 41,
+      "level": 38,
       "icon": "fab fa-react",
       "color": "text-blue-400"
     },
     {
       "name": "Angular",
-      "level": 23,
+      "level": 25,
       "icon": "fab fa-angular",
       "color": "text-red-500"
     },
     {
       "name": "Node.js",
-      "level": 18,
+      "level": 17,
       "icon": "fab fa-node-js",
       "color": "text-green-500"
     },
     {
       "name": "Vue",
-      "level": 14,
+      "level": 13,
       "icon": "fab fa-vuejs",
       "color": "text-green-400"
     }
@@ -60,10 +60,10 @@
   "tools": [
     {
       "name": "AWS",
-      "level": 5,
+      "level": 4,
       "icon": "fab fa-aws",
       "color": "text-orange-400"
     }
   ],
-  "lastUpdated": "2026-03-31T05:10:43.228Z"
+  "lastUpdated": "2026-04-01T05:25:54.567Z"
 }
