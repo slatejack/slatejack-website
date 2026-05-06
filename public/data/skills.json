@@ -14,7 +14,7 @@
     },
     {
       "name": "Vue",
-      "level": 4,
+      "level": 3,
       "icon": "fas fa-code",
       "color": "text-gray-400"
     },
@@ -65,5 +65,5 @@
       "color": "text-orange-400"
     }
   ],
-  "lastUpdated": "2026-05-05T05:45:25.989Z"
+  "lastUpdated": "2026-05-06T06:06:56.978Z"
 }
