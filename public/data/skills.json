@@ -34,27 +34,27 @@
   "frameworks": [
     {
       "name": "React",
-      "level": 38,
+      "level": 37,
       "icon": "fab fa-react",
       "color": "text-blue-400"
     },
     {
       "name": "Angular",
-      "level": 25,
+      "level": 26,
       "icon": "fab fa-angular",
       "color": "text-red-500"
     },
     {
-      "name": "Node.js",
-      "level": 17,
-      "icon": "fab fa-node-js",
-      "color": "text-green-500"
-    },
-    {
       "name": "Vue",
-      "level": 13,
+      "level": 15,
       "icon": "fab fa-vuejs",
       "color": "text-green-400"
+    },
+    {
+      "name": "Node.js",
+      "level": 15,
+      "icon": "fab fa-node-js",
+      "color": "text-green-500"
     }
   ],
   "tools": [
@@ -65,5 +65,5 @@
       "color": "text-orange-400"
     }
   ],
-  "lastUpdated": "2026-05-06T06:06:56.978Z"
+  "lastUpdated": "2026-05-07T06:12:35.625Z"
 }
