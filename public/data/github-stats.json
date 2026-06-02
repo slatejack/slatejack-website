@@ -2,7 +2,7 @@
   "stats": [
     {
       "icon": "fas fa-code",
-      "value": 34,
+      "value": 35,
       "label": "公开仓库",
       "color": "text-github-blue",
       "key": "public_repos"
@@ -29,5 +29,5 @@
       "key": "followers"
     }
   ],
-  "lastUpdated": "2026-06-01T08:35:57.218Z"
+  "lastUpdated": "2026-06-02T07:25:10.899Z"
 }

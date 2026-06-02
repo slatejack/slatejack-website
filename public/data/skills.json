@@ -19,51 +19,51 @@
       "color": "text-gray-400"
     },
     {
+      "name": "Less",
+      "level": 2,
+      "icon": "fas fa-code",
+      "color": "text-gray-400"
+    },
+    {
       "name": "Rust",
       "level": 1,
       "icon": "fas fa-cog",
       "color": "text-orange-600"
-    },
-    {
-      "name": "Java",
-      "level": 1,
-      "icon": "fab fa-java",
-      "color": "text-red-500"
     }
   ],
   "frameworks": [
     {
       "name": "React",
-      "level": 37,
+      "level": 34,
       "icon": "fab fa-react",
       "color": "text-blue-400"
     },
     {
       "name": "Angular",
-      "level": 26,
+      "level": 25,
       "icon": "fab fa-angular",
       "color": "text-red-500"
     },
     {
       "name": "Vue",
-      "level": 15,
+      "level": 16,
       "icon": "fab fa-vuejs",
       "color": "text-green-400"
     },
     {
       "name": "Node.js",
-      "level": 15,
+      "level": 13,
       "icon": "fab fa-node-js",
       "color": "text-green-500"
     }
   ],
   "tools": [
     {
-      "name": "AWS",
-      "level": 4,
-      "icon": "fab fa-aws",
-      "color": "text-orange-400"
+      "name": "Git",
+      "level": 9,
+      "icon": "fab fa-git-alt",
+      "color": "text-orange-500"
     }
   ],
-  "lastUpdated": "2026-06-01T08:35:57.575Z"
+  "lastUpdated": "2026-06-02T07:25:11.005Z"
 }
