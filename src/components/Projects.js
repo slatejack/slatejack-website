@@ -7,42 +7,45 @@ const Projects = ({ username = 'slatejack' }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
-  
+
   // 从缓存的JSON文件获取项目数据
   useEffect(() => {
     const fetchProjectsData = async () => {
       try {
         setLoading(true);
-        
+
         // 获取缓存的项目数据
-        const response = await fetch('https://raw.githubusercontent.com/slatejack/slatejack-website/refs/heads/master/public/data/projects.json');
+        let response = await fetch('https://raw.githubusercontent.com/slatejack/slatejack-website/refs/heads/master/public/data/projects.json');
         if (!response.ok) {
-          throw new Error('无法获取项目数据');
+          response = await fetch('/data/projects.json');
+          if (!response.ok) {
+            throw new Error('无法获取项目数据');
+          }
         }
-        
+
         const data = await response.json();
         setProjects(data.projects || []);
         setLastUpdated(data.lastUpdated ? new Date(data.lastUpdated).toLocaleDateString('zh-CN') : '未知');
-        
+
         if (data.error) {
           setError(`数据可能不是最新: ${data.error}`);
         }
-        
+
         setLoading(false);
       } catch (err) {
         console.error('获取项目数据时出错:', err);
         setError(err.message);
-        
+
         // 出错时使用默认项目
         setProjects([]);
-        
+
         setLoading(false);
       }
     };
-    
+
     fetchProjectsData();
   }, []);
-  
+
   useIntersectionObserver(projectsRef, () => {
     // 当组件进入视口时的动画效果已经通过CSS的fade-in类实现
   });
@@ -50,14 +53,14 @@ const Projects = ({ username = 'slatejack' }) => {
   return (
     <section id="projects" className="mb-16 fade-in" ref={projectsRef}>
       <h2 className="text-2xl font-bold mb-8">精选项目</h2>
-      
+
       {error && (
         <div className="bg-red-500/10 border border-red-500/30 text-red-500 p-4 rounded-lg mb-6 text-center">
           <p>获取GitHub项目数据时出错: {error}</p>
           <p className="text-sm mt-2">使用默认项目数据展示</p>
         </div>
       )}
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {loading ? (
           // 加载中的骨架屏
@@ -115,7 +118,7 @@ const Projects = ({ username = 'slatejack' }) => {
           ))
         )}
       </div>
-      
+
       <div className="text-center mt-4 text-xs text-github-text/50 dark:text-github-text/50 text-light-secondary">
         数据来源: GitHub 缓存数据 • 最后更新: {lastUpdated || '未知'}
       </div>
