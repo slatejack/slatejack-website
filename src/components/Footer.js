@@ -7,6 +7,9 @@ const Footer = () => {
         <p className="text-github-text/60 dark:text-github-text/60 text-light-secondary">
           © {new Date().getFullYear()} SlateJack. 用 ❤️ 和 ☕ 制作
         </p>
+        <p className="text-github-text/60 dark:text-github-text/60 text-light-secondary">
+          蜀ICP备19028675号
+        </p>
       </div>
     </footer>
   );
