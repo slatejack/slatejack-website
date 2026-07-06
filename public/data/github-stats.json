@@ -2,14 +2,14 @@
   "stats": [
     {
       "icon": "fas fa-code",
-      "value": 32,
+      "value": 35,
       "label": "公开仓库",
       "color": "text-github-blue",
       "key": "public_repos"
     },
     {
       "icon": "fas fa-star",
-      "value": 33,
+      "value": 34,
       "label": "获得星标",
       "color": "text-yellow-400",
       "key": "stargazers"
@@ -23,11 +23,11 @@
     },
     {
       "icon": "fas fa-users",
-      "value": 0,
+      "value": 2,
       "label": "关注者",
       "color": "text-github-blue",
       "key": "followers"
     }
   ],
-  "lastUpdated": "2026-01-06T04:02:18.928Z"
+  "lastUpdated": "2026-07-06T07:13:57.459Z"
 }
