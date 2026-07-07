@@ -23,11 +23,11 @@
     },
     {
       "icon": "fas fa-users",
-      "value": 2,
+      "value": 1,
       "label": "关注者",
       "color": "text-github-blue",
       "key": "followers"
     }
   ],
-  "lastUpdated": "2026-07-06T07:13:57.459Z"
+  "lastUpdated": "2026-07-07T06:47:58.992Z"
 }
