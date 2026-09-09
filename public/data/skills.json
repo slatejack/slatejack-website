@@ -19,16 +19,16 @@
       "color": "text-gray-400"
     },
     {
-      "name": "Less",
-      "level": 2,
-      "icon": "fas fa-code",
-      "color": "text-gray-400"
-    },
-    {
       "name": "Rust",
       "level": 1,
       "icon": "fas fa-cog",
       "color": "text-orange-600"
+    },
+    {
+      "name": "Java",
+      "level": 1,
+      "icon": "fab fa-java",
+      "color": "text-red-500"
     }
   ],
   "frameworks": [
@@ -65,5 +65,5 @@
       "color": "text-orange-500"
     }
   ],
-  "lastUpdated": "2026-09-08T07:53:04.167Z"
+  "lastUpdated": "2026-09-09T07:56:02.029Z"
 }
