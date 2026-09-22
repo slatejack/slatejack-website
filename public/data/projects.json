@@ -31,6 +31,16 @@
       "updatedAt": "2022-09-14"
     },
     {
+      "name": "jev-desktop",
+      "description": "基于 TypeSafe jev 模型（System One）的桌面端评估工作台",
+      "language": "TypeScript",
+      "languageColor": "bg-blue-400",
+      "url": "https://github.com/slatejack/jev-desktop",
+      "stars": 0,
+      "forks": 0,
+      "updatedAt": "2026-09-21"
+    },
+    {
       "name": "taro-virtual-swiper",
       "description": "基于 Taro 的高性能虚拟 Swiper 组件，支持大数据量场景",
       "language": "TypeScript",
@@ -49,17 +59,7 @@
       "stars": 0,
       "forks": 0,
       "updatedAt": "2024-04-01"
-    },
-    {
-      "name": "ant-region-cascader",
-      "description": "适用于ant design的地区级联选择器",
-      "language": "Unknown",
-      "languageColor": "bg-gray-400",
-      "url": "https://github.com/slatejack/ant-region-cascader",
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2023-07-02"
     }
   ],
-  "lastUpdated": "2026-09-21T08:39:33.875Z"
+  "lastUpdated": "2026-09-22T08:18:36.440Z"
 }
