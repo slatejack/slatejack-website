@@ -11,6 +11,16 @@
       "updatedAt": "2026-02-04"
     },
     {
+      "name": "jev-desktop",
+      "description": "基于 TypeSafe jev 模型（System One）的桌面端评估工作台",
+      "language": "TypeScript",
+      "languageColor": "bg-blue-400",
+      "url": "https://github.com/slatejack/jev-desktop",
+      "stars": 1,
+      "forks": 0,
+      "updatedAt": "2026-10-21"
+    },
+    {
       "name": "ant-lunar-picker",
       "description": "适用于antd的农历日期选择器",
       "language": "TypeScript",
@@ -29,16 +39,6 @@
       "stars": 1,
       "forks": 0,
       "updatedAt": "2022-09-14"
-    },
-    {
-      "name": "jev-desktop",
-      "description": "基于 TypeSafe jev 模型（System One）的桌面端评估工作台",
-      "language": "TypeScript",
-      "languageColor": "bg-blue-400",
-      "url": "https://github.com/slatejack/jev-desktop",
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-09-21"
     },
     {
       "name": "taro-virtual-swiper",
@@ -61,5 +61,5 @@
       "updatedAt": "2024-04-01"
     }
   ],
-  "lastUpdated": "2026-10-20T08:15:34.797Z"
+  "lastUpdated": "2026-10-21T08:20:19.133Z"
 }
