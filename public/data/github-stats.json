@@ -9,7 +9,7 @@
     },
     {
       "icon": "fas fa-star",
-      "value": 35,
+      "value": 34,
       "label": "获得星标",
       "color": "text-yellow-400",
       "key": "stargazers"
@@ -29,5 +29,5 @@
       "key": "followers"
     }
   ],
-  "lastUpdated": "2026-11-16T10:44:22.615Z"
+  "lastUpdated": "2026-11-17T11:32:31.723Z"
 }
